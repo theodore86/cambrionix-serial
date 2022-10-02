@@ -1,0 +1,38 @@
+---
+name: CI/Linting and Testing
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  python_linting_and_testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4.2.0
+        with:
+          python-version: 2.7
+      
+      - name: Install tox automation tool
+        run: |
+          pip install tox==3.26.0
+
+      - name: Linting and testing
+        run: tox
+
+  dockerfile_linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+
+      - name: Run Hadolint
+        uses: hadolint/hadolint-action@v2.1.0
+        with:
+          failure-threshold: error
+...

@@ -1,0 +1,6 @@
+[run]
+omit =
+    .tox/*
+    tests/*
+    cambrionix/tools/*
+    .github/*

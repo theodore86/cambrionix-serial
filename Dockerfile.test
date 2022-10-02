@@ -1,0 +1,28 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y \
+    python2-dev \
+    python-pip \
+    python-setuptools && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+
+ARG USER=ubuntu
+ARG WORKSPACE=/app
+
+WORKDIR ${WORKSPACE}
+
+RUN useradd -ms /bin/bash ${USER} && \
+    chown ${USER}:${USER} ${WORKSPACE} && \
+    chmod 0755 ${WORKSPACE}
+
+USER ${USER}
+
+ARG TOX_VERSION=3.26.0
+RUN python2 -m pip install --user --no-cache-dir tox=="${TOX_VERSION}"
+
+COPY --chown=${USER}:${USER} . ./
+
+ENV PATH="${PATH}:/home/${USER}/.local/bin"
+
+ENTRYPOINT ["tox"]

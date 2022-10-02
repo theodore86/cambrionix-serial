@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# Allow
+!.pylintrc
+!.coveragerc
+!pytest.ini
+!tox.ini
+!cambrionix
+!tests
+!requirements.txt
