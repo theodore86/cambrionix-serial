@@ -45,7 +45,7 @@ extension-pkg-whitelist=lxml
 # --disable=W"
 # C0111 Missing docstring
 # R0903 Too few public methods
-disable=C0111,R0903
+disable=C0111,R0903,R0801,W0403
 
 
 [REPORTS]

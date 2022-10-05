@@ -4,7 +4,7 @@ name: CI/Linting and Testing
 on:
   pull_request:
     branches:
-      - 'main'
+      - main
 
 jobs:
   python_linting_and_testing:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4.2.0
         with:
-          python-version: 2.7
+          python-version: 2.7.18
       
       - name: Install tox automation tool
         run: |
@@ -35,4 +35,5 @@ jobs:
         uses: hadolint/hadolint-action@v2.1.0
         with:
           failure-threshold: error
+          dockerfile: Dockerfile.test
 ...
