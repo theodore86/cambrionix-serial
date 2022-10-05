@@ -9,7 +9,7 @@ import sys
 import argparse
 from cambrionix import Cambrionix
 from cambrionix.logger import get_logger
-from .xmlrpc import main as _main
+from ._xmlrpc import main as _main
 
 
 LOGGER = get_logger(__name__)
